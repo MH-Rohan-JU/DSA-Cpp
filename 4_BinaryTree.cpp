@@ -61,10 +61,50 @@ void levelOrderTraversal(node *root)
         }
     }
 }
+void inorderTraversal(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
+}
+void preorderTraversal(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    cout << root->data << " ";
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
+}
+void postorderTraversal(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    cout << root->data << " ";
+}
 int main()
 {
     node *root = NULL;
     root = binaryTree(root);
+    cout << "Leverl Order Traversal:" << endl;
     levelOrderTraversal(root);
+    cout << "In Order Traversal:" << endl;
+    inorderTraversal(root);
+    cout << endl
+         << "Pre Order Traversal:" << endl;
+    preorderTraversal(root);
+    cout << endl
+         << "Post Order Traversal:" << endl;
+    postorderTraversal(root);
+    cout << endl;
     return 0;
 }
