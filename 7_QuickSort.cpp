@@ -3,43 +3,36 @@ using namespace std;
 #define endl "\n"
 #define ll long long
 
-int partitionIndex(int arr[], int l, int r)
-{
+int partitionIndex(int arr[], int l, int r) {
     int pivot = arr[l];
     int i = l + 1, j = r;
 
-    while (i < j)
-    {
+    while (i < j) {
         if (arr[i] < pivot)
             i++;
         if (arr[j] > pivot)
             j--;
-        if (arr[i] > pivot && arr[j] < pivot)
-        {
+        if (arr[i] > pivot && arr[j] < pivot) {
             swap(arr[i], arr[j]);
         }
     }
 
-    if (arr[i] < pivot)
-    {
+    if (arr[i] < pivot) {
         swap(arr[l], arr[i]);
     }
 
     return i;
 }
 
-void quickSort(int arr[], int l, int r)
-{
-    if (l < r)
-    {
+void quickSort(int arr[], int l, int r) {
+    if (l < r) {
         int pi = partitionIndex(arr, l, r);
         quickSort(arr, l, pi - 1);
         quickSort(arr, pi, r);
     }
     return;
 }
-int main()
-{
+int main() {
     int arr[10] = {60, 54, 25, 78, 48, 35, 63, 3, 5, 10};
 
     // Printing the given array

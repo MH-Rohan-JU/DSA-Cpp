@@ -3,49 +3,41 @@
 using namespace std;
 #define endl "\n"
 #define ll long long
-class node
-{
-public:
+class node {
+  public:
     int data;
     node *next;
-    node(int data)
-    {
+    node(int data) {
         this->data = data;
         this->next = NULL;
     }
 };
-void insertHead(node *&head, int d)
-{
+void insertHead(node *&head, int d) {
     node *temp = new node(d);
     temp->next = head;
-    head =temp;
+    head = temp;
 }
-void insertTail(node *&tail, int d)
-{
+void insertTail(node *&tail, int d) {
     node *temp = new node(d);
     tail->next = temp;
     tail = temp;
 }
-void insertPosition(node *&head, int p, int d)
-{
+void insertPosition(node *&head, int p, int d) {
     node *mid = new node(d);
     node *temp = head;
     int cnt = 1;
-    while (cnt < p - 1)
-    {
+    while (cnt < p - 1) {
         temp = temp->next;
         cnt++;
     }
     mid->next = temp->next;
     temp->next = mid;
 }
-void delnode(node *&head, int p)
-{
+void delnode(node *&head, int p) {
     node *temp = head;
     node *del;
     int cnt = 1;
-    while (cnt < p - 1)
-    {
+    while (cnt < p - 1) {
         temp = temp->next;
         cnt++;
     }
@@ -53,17 +45,14 @@ void delnode(node *&head, int p)
     temp->next = del->next;
     del->next = NULL;
 }
-void printList(node *&head)
-{
+void printList(node *&head) {
     node *temp = head;
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         cout << temp->data << " ";
         temp = temp->next;
     }
 }
-int main()
-{
+int main() {
     node *node1 = new node(1);
     node *head = node1;
     node *tail = node1;

@@ -2,21 +2,17 @@
 using namespace std;
 #define endl "\n"
 #define ll long long
-class node
-{
-public:
+class node {
+  public:
     int data;
     node *next = NULL;
-    node(int data)
-    {
+    node(int data) {
         this->data = data;
         this->next = NULL;
     }
 };
-void insertNode(node *&head, int data, int value)
-{
-    if (head == NULL)
-    {
+void insertNode(node *&head, int data, int value) {
+    if (head == NULL) {
         node *temp = new node(data);
         head = temp;
         head->next = temp;
@@ -24,41 +20,34 @@ void insertNode(node *&head, int data, int value)
     }
     node *temp = head;
     node *add = new node(data);
-    while (temp->data != value)
-    {
+    while (temp->data != value) {
         temp = temp->next;
     }
     add->next = temp->next;
     temp->next = add;
 }
-void deleteValue(node *&head, int value)
-{
+void deleteValue(node *&head, int value) {
     node *temp = head, *dlt;
-    while (temp->next->data != value)
-    {
+    while (temp->next->data != value) {
         temp = temp->next;
     }
     dlt = temp->next;
-    if (dlt == head)
-    {
+    if (dlt == head) {
         head = dlt->next;
     }
     temp->next = dlt->next;
     dlt->next = NULL;
     delete dlt;
 }
-void printcircular(node *&head)
-{
+void printcircular(node *&head) {
     node *temp = head;
-    do
-    {
+    do {
         cout << temp->data << " ";
         temp = temp->next;
     } while (temp != head);
     cout << endl;
 }
-int main()
-{
+int main() {
     node *head = NULL;
     insertNode(head, 1, 1);
     insertNode(head, 3, 1);

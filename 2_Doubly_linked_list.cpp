@@ -2,71 +2,64 @@
 using namespace std;
 #define endl "\n"
 #define ll long long
-class node
-{
-public:
+
+class node {
+  public:
     int data;
     node *prev;
     node *next;
-    node(int data)
-    {
+    node(int data) {
         this->data = data;
         prev = NULL;
         next = NULL;
     }
 };
-int length(node *head)
-{
+
+int length(node *head) {
     int len = 0;
     node *temp = head;
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         len++;
         temp = temp->next;
     }
     return len;
 }
-void printList(node *head)
-{
+void printList(node *head) {
     node *temp = head;
-    while (temp != NULL)
-    {
+    while (temp != NULL) {
         cout << temp->data << " ";
         temp = temp->next;
     }
     cout << endl;
 }
-void insertAtHead(node *&head, int data)
-{
+
+void insertAtHead(node *&head, int data) {
     node *temp = new node(data);
     temp->next = head;
     head->prev = temp;
     head = temp;
 }
-void insertAtTail(node *&tail, int data)
-{
+
+void insertAtTail(node *&tail, int data) {
     node *temp = new node(data);
     temp->prev = tail;
     tail->next = temp;
     tail = temp;
 }
-void insertAtPosition(node *&head, node *&tail, int data, int position)
-{
+
+void insertAtPosition(node *&head, node *&tail, int data, int position) {
     int count = 1;
     node *temp = head;
     node *mid = new node(data);
-    if (position == 1)
-    {
+    if (position == 1) {
         insertAtHead(head, data);
         return;
     }
-    while (count < position - 1)
-    {
+    while (count < position - 1) {
         temp = temp->next;
         count++;
     }
-    if (temp->next == NULL)
-    {
+    if (temp->next == NULL) {
         insertAtTail(tail, data);
         return;
     }
@@ -75,11 +68,10 @@ void insertAtPosition(node *&head, node *&tail, int data, int position)
     temp->next = mid;
     mid->prev = temp;
 }
-void del_element(node *&head, node *&tail, int position)
-{
+
+void del_element(node *&head, node *&tail, int position) {
     node *temp = head;
-    if (position == 1)
-    {
+    if (position == 1) {
         head = temp->next;
         head->prev = NULL;
         temp->next = NULL;
@@ -87,13 +79,11 @@ void del_element(node *&head, node *&tail, int position)
         return;
     }
     int count = 1;
-    while (count < position)
-    {
+    while (count < position) {
         count++;
         temp = temp->next;
     }
-    if (temp->next == NULL)
-    {
+    if (temp->next == NULL) {
         tail = temp->prev;
         tail->next = NULL;
         temp->prev = NULL;
@@ -105,8 +95,8 @@ void del_element(node *&head, node *&tail, int position)
     temp->prev = NULL, temp->next = NULL;
     delete temp;
 }
-int main()
-{
+
+int main() {
     node *n1 = new node(10);
     node *head = n1;
     node *tail = n1;
