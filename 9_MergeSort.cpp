@@ -4,7 +4,7 @@ using namespace std;
 #define ll long long
 
 void merge(int arr[], int l, int mid, int r) {
-    int s1 = mid - l + 1, s2 = r - l;
+    int s1 = mid - l + 1, s2 = r - mid;
     int a[s1], b[s2], i, j, k;
 
     for (i = 0; i < s1; i++) {
