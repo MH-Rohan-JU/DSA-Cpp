@@ -4,24 +4,19 @@ using namespace std;
 #define ll long long
 
 int partitionIndex(int arr[], int l, int r) {
-    int pivot = arr[l];
-    int i = l + 1, j = r;
 
-    while (i < j) {
-        if (arr[i] < pivot)
+    int pivot = arr[r];
+    int i = (l - 1);
+
+    for (int j = l; j <= r - 1; j++) {
+        if (arr[j] <= pivot) {
             i++;
-        if (arr[j] > pivot)
-            j--;
-        if (arr[i] > pivot && arr[j] < pivot) {
             swap(arr[i], arr[j]);
         }
     }
+    swap(arr[i + 1], arr[r]);
 
-    if (arr[i] < pivot) {
-        swap(arr[l], arr[i]);
-    }
-
-    return i;
+    return (i + 1);
 }
 
 void quickSort(int arr[], int l, int r) {
