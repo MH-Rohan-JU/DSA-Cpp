@@ -50,7 +50,7 @@ void mergeSort(int arr[], int l, int r) {
 }
 int main() {
     int size = 8;
-    int arr[size] = {56, 71, 28, 98, 12, 44, 64, 35};
+    int arr[8] = {56, 71, 28, 98, 12, 44, 64, 35};
 
     cout << "The unsorted array:\n";
     for (int i = 0; i < size; i++) {
